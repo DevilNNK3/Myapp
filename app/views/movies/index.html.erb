@@ -1,0 +1,22 @@
+<%= link_to "Create New Movie", new_movie_path %>
+<table class="table">
+  <thead>
+  	<tr>
+  		<th>Title</th>
+  		<th>Catagory</th>
+  		<th>Director</th>
+      <th colspan="2">Actions</th>
+  	</tr>
+  </thead>
+  <tbody>
+  	<% @movies.each do |movie| %>
+  	<tr>
+  		<td><%= movie.title %></td>
+  		<td><%= movie.catagory %></td>
+      <td><%= movie.director %></td>
+  		<td><%= link_to "Edit", edit_movie_path(movie.id) %></td>
+  		<td><%= link_to "Delete", movie_path(movie.id), data: { confirm: 'Are you sure?'}, method: :delete %></td>
+  	</tr>
+<% end %>
+  </tbody>
+</table>
