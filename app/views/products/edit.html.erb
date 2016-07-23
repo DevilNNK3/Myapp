@@ -1,0 +1,16 @@
+<%= form_for @product do |f| %>
+
+  <%= f.label :Name %>:
+  <%= f.text_field :name %>
+	<br />
+  <%= f.label :category %>:
+  <%= f.text_field :category %>
+    <br/>
+  <%= f.label :Price %>:
+  <%= f.text_field :price %>
+    <br/>
+  <%= f.label :details %>:
+  <%= f.text_field :details %>
+    <br/>
+  <%= f.submit "UPDATE" %>
+<% end %>

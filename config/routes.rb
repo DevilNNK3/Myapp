@@ -12,5 +12,7 @@ Rails.application.routes.draw do
 
   resources :movies
 
+  resources :products
+
   root "books#index"
 end
