@@ -8,9 +8,20 @@ class BooksController < ApplicationController
 	end
 
 	def create
+		pp params
+		pp "----------------------------------------"
         @book = Book.new(book_params)
 
         @book.save
+        
+        if params[:picture].present?
+        	@picture = Picture.new
+        	@picture.name = params[:picture][:name]
+        	@picture.book = @book
+        	@picture.save
+        end
+
+
         redirect_to books_path
 	end
 
@@ -29,6 +40,11 @@ class BooksController < ApplicationController
 		@book = Book.find(params[:id])
 		@book.destroy
 		redirect_to books_path
+	end
+
+
+	def show
+		@book = Book.find(params[:id])
 	end
 
 	private
