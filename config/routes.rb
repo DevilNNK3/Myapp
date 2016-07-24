@@ -14,5 +14,7 @@ Rails.application.routes.draw do
 
   resources :products
 
+  resources :cars
+
   root "books#index"
 end
