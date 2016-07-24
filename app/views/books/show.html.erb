@@ -1,4 +1,7 @@
 <% @book.pictures.each do |picture| %>
+	<label>Picture Name</label>
+	<%= picture.name %>
+	</br>
 	<label>Picture</label>
 	<%= image_tag picture.name.url(:medium) %>
 <% end %>

@@ -8,10 +8,10 @@ class BooksController < ApplicationController
 	end
 
 	def create
-		pp params
-		pp "----------------------------------------"
-        @book = Book.new(book_params)
-
+        @book = Book.new
+		# @book.assign_attributes(book_params)
+		@book.name = params[:book][:name]
+		@book.description = params[:book][:description]
         @book.save
         
         if params[:picture].present?
@@ -20,9 +20,7 @@ class BooksController < ApplicationController
         	@picture.book = @book
         	@picture.save
         end
-
-
-        redirect_to books_path
+		redirect_to books_path
 	end
 
 	def edit
@@ -31,8 +29,18 @@ class BooksController < ApplicationController
 
 	def update
 		@book = Book.find(params[:id])
-		@book.assign_attributes(book_params)
+		# @book.assign_attributes(book_params)
+		@book.name = params[:book][:name]
+		@book.description = params[:book][:description]
 		@book.save
+		
+		if params[:picture].present?	
+			@picture = @book.pictures.first
+			@picture.name = params[:picture][:name]
+			@picture.save
+		end
+
+
 		redirect_to books_path
 	end
 
